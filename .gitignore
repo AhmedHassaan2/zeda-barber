@@ -48,3 +48,4 @@ test-*.txt
 AGENTS.md
 CLAUDE.md
 scripts/setup-supabase.js
+scripts/deploy-vercel.mjs

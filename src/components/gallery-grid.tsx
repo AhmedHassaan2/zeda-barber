@@ -33,11 +33,12 @@ export default function GalleryGrid({ images }: { images: string[] }) {
               className="w-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
               loading="lazy"
             />
-            <div className="absolute top-2 right-2 md:top-3 md:right-3 z-10 opacity-40 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-3 right-3 z-10 pointer-events-none">
               <img
                 src="/images/logos/zeda-logo.png"
                 alt=""
-                className="h-5 md:h-7 w-auto brightness-0 invert"
+                className="h-6 md:h-8 w-auto brightness-0 invert opacity-80"
               />
             </div>
           </div>

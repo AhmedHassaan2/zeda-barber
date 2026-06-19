@@ -48,13 +48,21 @@ export default function GalleryLightbox({
       >
         <span className="material-symbols-outlined text-4xl md:text-5xl">chevron_left</span>
       </button>
-      <img
-        src={images[currentIndex]}
-        alt={`Gallery ${currentIndex + 1}`}
-        className="max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain select-none"
-        onClick={(e) => e.stopPropagation()}
-        draggable={false}
-      />
+      <div className="relative" onClick={(e) => e.stopPropagation()}>
+        <img
+          src={images[currentIndex]}
+          alt={`Gallery ${currentIndex + 1}`}
+          className="max-h-[90vh] max-w-[90vw] w-auto h-auto object-contain select-none"
+          draggable={false}
+        />
+        <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
+          <img
+            src="/images/logos/zeda-logo.png"
+            alt="ZEDA"
+            className="h-8 md:h-10 w-auto brightness-0 invert opacity-60"
+          />
+        </div>
+      </div>
       <button
         onClick={(e) => { e.stopPropagation(); onNext(); }}
         className="absolute right-4 md:right-8 text-white/60 hover:text-white z-10 p-3 transition-colors"

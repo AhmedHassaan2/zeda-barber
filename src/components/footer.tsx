@@ -1,22 +1,28 @@
+"use client";
+
+import { useLang } from "@/lib/language-context";
+
 export default function Footer() {
+  const { t, lang } = useLang();
+
   return (
     <footer className="w-full py-16 md:py-20 bg-surface-container-lowest border-t border-outline-variant mt-24">
       <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto">
-          <div className="text-center md:text-right">
-            <h4 className="text-primary font-label-caps mb-4 uppercase tracking-wider">بيانات الاتصال</h4>
-            <div className="space-y-4 text-on-surface-variant font-body-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 max-w-5xl mx-auto">
+          <div className={`${lang === "ar" ? "text-center md:text-right" : "text-center md:text-left"}`}>
+            <h4 className="text-primary font-label-caps mb-6 uppercase tracking-wider">{t("footer.contact")}</h4>
+            <div className="space-y-5 text-on-surface-variant font-body-md">
               <div>
-                <span className="text-primary font-label-caps text-xs block mb-1">العنوان</span>
-                <p>كفرتصفا - كفرشكر<br />قليوبية</p>
+                <span className="text-primary font-label-caps text-xs block mb-1">{t("footer.address")}</span>
+                <p>{t("footer.address_val")}</p>
               </div>
               <div>
-                <span className="text-primary font-label-caps text-xs block mb-1">مواعيد العمل</span>
-                <p>السبت — الخميس: ١٠ص — ١١م<br />الجمعة: بالحجز المسبق</p>
+                <span className="text-primary font-label-caps text-xs block mb-1">{t("footer.hours")}</span>
+                <p>{t("footer.hours_val")}</p>
               </div>
               <div>
-                <span className="text-primary font-label-caps text-xs block mb-1">الهاتف</span>
-                <p dir="ltr">01069389235</p>
+                <span className="text-primary font-label-caps text-xs block mb-1">{t("footer.phone")}</span>
+                <p dir="ltr">{t("footer.phone_val")}</p>
               </div>
               <a
                 href="https://wa.me/201069389235"
@@ -24,15 +30,15 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-block mt-2 text-primary hover:opacity-80 transition-opacity font-button text-button uppercase"
               >
-                واتساب
+                {t("footer.whatsapp")}
               </a>
             </div>
           </div>
-          <div className="text-center md:text-right">
-            <h4 className="text-primary font-label-caps mb-4 uppercase tracking-wider">المطور</h4>
-            <div className="space-y-4 text-on-surface-variant font-body-md">
+          <div className={`${lang === "ar" ? "text-center md:text-right" : "text-center md:text-left"}`}>
+            <h4 className="text-primary font-label-caps mb-6 uppercase tracking-wider">{t("footer.developer")}</h4>
+            <div className="space-y-5 text-on-surface-variant font-body-md">
               <p>
-                Developed by{" "}
+                {t("footer.dev_by")}{" "}
                 <a
                   href="https://www.facebook.com/ahmedhassaan.dev"
                   target="_blank"
@@ -53,7 +59,7 @@ export default function Footer() {
                 </a>
               </div>
               <div>
-                <span className="text-primary font-label-caps text-xs block mb-1">واتساب المطور</span>
+                <span className="text-primary font-label-caps text-xs block mb-1">{t("footer.dev_whatsapp")}</span>
                 <a
                   href="https://wa.me/201022677775"
                   target="_blank"
@@ -67,7 +73,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-8 mt-12 border-t border-outline-variant/30 text-on-surface-variant/50 font-body-md text-xs text-center">
-          <p>© 2026 ZEDA BARBER SHOP. All rights reserved.</p>
+          <p>{t("footer.copyright")}</p>
         </div>
       </div>
     </footer>

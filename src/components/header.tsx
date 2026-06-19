@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLang } from "@/lib/language-context";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, toggleLang, t } = useLang();
 
   const navLinks = [
-    { href: "/", label: "الرئيسية" },
-    { href: "/services", label: "الخدمات" },
-    { href: "/gallery", label: "معرض الأعمال" },
-    { href: "/booking", label: "اتصل بنا" },
+    { href: "/", label: t("nav.home") },
+    { href: "/services", label: t("nav.services") },
+    { href: "/gallery", label: t("nav.gallery") },
+    { href: "/contact", label: t("nav.contact") },
   ];
 
   return (
@@ -19,7 +21,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <img src="/images/logos/zeda-logo.png" alt="ZEDA" className="h-10 w-auto" />
         </Link>
-        <nav className="hidden md:flex gap-12 items-center">
+        <nav className="hidden md:flex gap-8 lg:gap-12 items-center">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -30,12 +32,21 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/booking"
-          className="hidden md:inline-block px-6 py-2.5 border border-primary text-primary font-button text-button uppercase tracking-[0.1em] hover:bg-primary hover:text-surface transition-all duration-400"
-        >
-          احجز الآن
-        </Link>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="px-3 py-1.5 border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary font-button text-xs uppercase tracking-wider transition-all duration-300"
+            aria-label="Toggle language"
+          >
+            {lang === "ar" ? "EN" : "AR"}
+          </button>
+          <Link
+            href="/booking"
+            className="hidden md:inline-block px-6 py-2.5 border border-primary text-primary font-button text-button uppercase tracking-[0.1em] hover:bg-primary hover:text-surface transition-all duration-400"
+          >
+            {t("nav.book")}
+          </Link>
+        </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-primary p-2"
@@ -48,6 +59,12 @@ export default function Header() {
       </div>
       {menuOpen && (
         <div className="md:hidden fixed inset-0 z-40 bg-surface flex flex-col items-center justify-center gap-8">
+          <button
+            onClick={toggleLang}
+            className="px-6 py-2 border border-primary text-primary font-button text-button uppercase tracking-wider hover:bg-primary hover:text-surface transition-all duration-300"
+          >
+            {lang === "ar" ? "English" : "العربية"}
+          </button>
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -63,7 +80,7 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
             className="mt-8 px-10 py-4 bg-primary text-surface font-button text-button uppercase tracking-[0.1em]"
           >
-            احجز الآن
+            {t("nav.book")}
           </Link>
         </div>
       )}

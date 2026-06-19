@@ -21,6 +21,32 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.marquee-strip {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.marquee-strip > span {
+  display: inline-block;
+  animation: marquee 12s linear infinite;
+}
+
+.marquee-strip-reverse > span {
+  display: inline-block;
+  animation: marquee-reverse 12s linear infinite;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

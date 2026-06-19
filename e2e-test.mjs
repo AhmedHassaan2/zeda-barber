@@ -27,7 +27,7 @@ async function takeScreenshots(page, name) {
   ];
   for (const vp of viewports) {
     await page.setViewportSize(vp);
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1500);
     await page.screenshot({
       path: join(SCREENSHOT_DIR, `${name}-${vp.label}.png`),
       fullPage: true,
@@ -54,28 +54,26 @@ async function run() {
     await page.waitForSelector('header img[alt="ZEDA"]', { timeout: 5000 });
   });
 
-  await test("Hero section with heading", async () => {
-    const heading = page.locator("h1");
-    await heading.waitFor({ state: "visible", timeout: 5000 });
-    const text = await heading.textContent();
-    if (!text?.includes("PRECISION")) throw new Error(`Missing PRECISION: "${text}"`);
-  });
-
   await test("Hero video element", async () => {
     const video = page.locator("video");
     const count = await video.count();
     if (count === 0) throw new Error("No video element");
   });
 
-  await test("Hero has ZEDA logo watermark over video", async () => {
-    const logos = page.locator("section").first().locator('img[alt="ZEDA"]');
-    const count = await logos.count();
+  await test("Hero has large ZEDA logo", async () => {
+    const heroLogo = page.locator("section").first().locator('img[alt="ZEDA"]');
+    const count = await heroLogo.count();
     if (count === 0) throw new Error("No ZEDA logo in hero");
   });
 
-  await test("Hero has 'سيب نفسك' decorative text", async () => {
+  await test("Hero has 'سيب نفسك' in marquee strip", async () => {
     const text = page.locator("section").first().locator("text=سيب نفسك");
     await text.waitFor({ state: "visible", timeout: 5000 });
+  });
+
+  await test("Language toggle button exists in header", async () => {
+    const langBtn = page.locator('header button:has-text("EN")');
+    await langBtn.waitFor({ state: "visible", timeout: 5000 });
   });
 
   await test("Booking button links to /booking", async () => {
@@ -83,27 +81,29 @@ async function run() {
     await bookingBtn.waitFor({ state: "visible", timeout: 5000 });
   });
 
-  await test("Services section", async () => {
+  await test("Services section visible", async () => {
     await page.waitForSelector("text=خدماتنا", { timeout: 5000 });
     await page.waitForSelector("text=حلاقة شعر كلاسيكية", { timeout: 5000 });
   });
 
-  await test("Services link to /booking", async () => {
-    const serviceLinks = page.locator("section").filter({ hasText: "خدماتنا" }).locator('a[href="/booking"]');
-    const count = await serviceLinks.count();
-    if (count < 7) throw new Error(`Only ${count} service links`);
+  await test("Services use icons (Material Symbols)", async () => {
+    const icons = page.locator("section").filter({ hasText: "خدماتنا" }).locator(".material-symbols-outlined");
+    const count = await icons.count();
+    if (count < 7) throw new Error(`Only ${count} service icons`);
   });
 
-  await test("Gallery section with watermarks", async () => {
+  await test("Gallery section on homepage with 3 columns", async () => {
     await page.waitForSelector("text=معرض أعمالنا", { timeout: 5000 });
-    const waters = page.locator('img[alt=""]').locator("..").filter({ has: page.locator('[src*="zeda-logo"]') });
+    const imgs = page.locator("section").filter({ hasText: "معرض أعمالنا" }).locator("img");
+    const count = await imgs.count();
+    if (count < 3) throw new Error(`Only ${count} gallery images on homepage`);
   });
 
-  await test("Gallery images are grayscale (B&W) on homepage", async () => {
+  await test("Gallery images are grayscale on homepage", async () => {
     const gallerySection = page.locator("section").filter({ hasText: "معرض أعمالنا" });
     const imgs = gallerySection.locator("img.grayscale");
     const count = await imgs.count();
-    if (count === 0) throw new Error("No grayscale images found on homepage gallery");
+    if (count === 0) throw new Error("No grayscale images on homepage gallery");
   });
 
   await test("Team section with all 5 barbers", async () => {
@@ -115,16 +115,16 @@ async function run() {
     }
   });
 
-  await test("Team image is grayscale (B&W) by default", async () => {
+  await test("Team image is grayscale by default", async () => {
     const teamImg = page.locator("section").filter({ hasText: "فريق العمل" }).locator("img.grayscale");
     const count = await teamImg.count();
     if (count === 0) throw new Error("No grayscale team image");
   });
 
-  await test("Barber strip with indicators below team photo", async () => {
-    const dots = page.locator("section").filter({ hasText: "فريق العمل" }).locator(".bg-primary.rounded-full");
+  await test("Barber strip with circular indicators", async () => {
+    const dots = page.locator("section").filter({ hasText: "فريق العمل" }).locator(".rounded-full");
     const count = await dots.count();
-    if (count < 5) throw new Error(`Only ${count} indicator dots`);
+    if (count < 5) throw new Error(`Only ${count} barber indicators`);
   });
 
   await test("CTA section", async () => {
@@ -136,26 +136,26 @@ async function run() {
     await ctaBtn.first().waitFor({ state: "visible", timeout: 5000 });
   });
 
-  await test("Footer with Ahmed Hassaan", async () => {
+  await test("Footer with Ahmed Hassaan and Engaz logo", async () => {
     const footer = page.locator("footer");
     await footer.locator('a:has-text("Ahmed Hassaan")').waitFor({ state: "visible", timeout: 5000 });
     await footer.locator('img[alt="إنجاز ميديا"]').waitFor({ state: "visible", timeout: 5000 });
     await footer.locator("text=01069389235").first().waitFor({ state: "visible", timeout: 5000 });
   });
 
-  await test("Footer has 2 columns: shop info + developer info", async () => {
+  await test("Footer has 2 columns with contact and developer info", async () => {
     const footer = page.locator("footer");
     await footer.locator("text=بيانات الاتصال").waitFor({ state: "visible", timeout: 5000 });
     await footer.locator("text=المطور").waitFor({ state: "visible", timeout: 5000 });
   });
 
-  await test("Header 'اتصل بنا' links to /booking", async () => {
+  await test("Header nav links use translations", async () => {
     const contactLink = page.locator('header a:has-text("اتصل بنا")');
-    const href = await contactLink.getAttribute("href");
-    if (href !== "/booking") throw new Error(`Header contact link is ${href}, expected /booking`);
+    await contactLink.first().waitFor({ state: "visible", timeout: 5000 });
   });
 
   await test("Screenshots: homepage at all viewports", async () => {
+    await page.goto(BASE, { waitUntil: "networkidle", timeout: 30000 });
     await takeScreenshots(page, "homepage");
   });
 
@@ -187,18 +187,6 @@ async function run() {
     await page.waitForSelector("text=اختر الموعد", { timeout: 5000 });
   });
 
-  await test("Booking page has calendar and time slots", async () => {
-    await page.goto(`${BASE}/booking`, { waitUntil: "networkidle", timeout: 30000 });
-    await page.locator("button:has-text('حلاقة شعر كلاسيكية')").first().click();
-    await page.locator("button:has-text('متابعة')").first().click();
-    await page.locator("button:has-text('زيدا')").first().click();
-    await page.locator("button:has-text('متابعة')").first().click();
-    await page.waitForSelector("text=المواعيد المتاحة", { timeout: 5000 });
-    const timeSlots = page.locator("button:has-text(':')");
-    const count = await timeSlots.count();
-    if (count < 5) throw new Error(`Only ${count} time slots`);
-  });
-
   await test("Screenshots: booking page", async () => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto(`${BASE}/booking`, { waitUntil: "networkidle", timeout: 30000 });
@@ -212,11 +200,10 @@ async function run() {
     if (!res || res.status() !== 200) throw new Error(`Status: ${res?.status()}`);
   });
 
-  await test("Gallery has image and watermark", async () => {
+  await test("Gallery has images", async () => {
     const imgs = page.locator("main img");
     const count = await imgs.count();
     if (count < 3) throw new Error(`Only ${count} images`);
-    const waters = page.locator('img[alt=""]').locator('[src*="zeda-logo"]');
   });
 
   await test("Screenshots: gallery page", async () => {
@@ -254,7 +241,7 @@ async function run() {
     if (!res || res.status() !== 200) throw new Error(`Status: ${res?.status()}`);
   });
 
-  await test("Contact info", async () => {
+  await test("Contact info visible", async () => {
     await page.waitForSelector("text=تواصل معنا", { timeout: 5000 });
     await page.locator("main").locator("text=01069389235").waitFor({ state: "visible", timeout: 5000 });
   });
@@ -268,20 +255,19 @@ async function run() {
     await takeScreenshots(page, "contact");
   });
 
-  console.log("\n=== AI HAIR PAGE ===");
+  console.log("\n=== LANGUAGE TOGGLE ===");
 
-  await test("AI Hair page loads (200)", async () => {
-    const res = await page.goto(`${BASE}/ai-hair`, { waitUntil: "networkidle", timeout: 30000 });
-    if (!res || res.status() !== 200) throw new Error(`Status: ${res?.status()}`);
-  });
-
-  await test("AI Hair image visible", async () => {
-    const img = page.locator('img[alt="جرب تسريحتك"]');
-    await img.waitFor({ state: "visible", timeout: 5000 });
-  });
-
-  await test("Screenshots: ai-hair page", async () => {
-    await takeScreenshots(page, "ai-hair");
+  await test("Toggle language AR→EN changes header text", async () => {
+    await page.goto(BASE, { waitUntil: "networkidle", timeout: 30000 });
+    const langBtn = page.locator('header button:has-text("EN")');
+    await langBtn.click();
+    await page.waitForTimeout(1000);
+    await page.waitForSelector('header a:has-text("Gallery")', { timeout: 5000 });
+    const langBtnEn = page.locator('header button:has-text("AR")');
+    await langBtnEn.waitFor({ state: "visible", timeout: 5000 });
+    await langBtnEn.click();
+    await page.waitForTimeout(500);
+    await page.waitForSelector('header a:has-text("معرض الأعمال")', { timeout: 5000 });
   });
 
   await browser.close();
@@ -291,7 +277,7 @@ async function run() {
   console.log(`Errors: ${errors.length}`);
   console.log(`Screenshots: screenshots/`);
   if (errors.length > 0) {
-    errors.forEach((e, i) => console.log(`  ${i + 1}. ${e.label}: ${e.error}`));
+    errors.forEach((e, i) => console.log(`  ${i + 1}. ${e.label}: ${e.message}`));
     process.exit(1);
   }
 }

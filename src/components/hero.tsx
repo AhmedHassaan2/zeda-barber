@@ -1,4 +1,10 @@
+"use client";
+
+import { useLang } from "@/lib/language-context";
+
 export default function Hero() {
+  const { t } = useLang();
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-surface">
       <div className="absolute inset-0 z-0">
@@ -8,7 +14,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
@@ -18,30 +24,25 @@ export default function Hero() {
         <img
           src="/images/logos/zeda-logo.png"
           alt="ZEDA"
-          className="h-12 md:h-16 w-auto mx-auto mb-3 md:mb-4"
+          className="h-36 md:h-48 w-auto mx-auto mb-6 md:mb-8"
         />
-        <span className="font-label-caps text-label-caps text-primary mb-3 md:mb-4 block tracking-[0.4em]">ZEDA BARBER SHOP</span>
-        <h1 className="font-display-lg text-[12vw] md:text-display-lg uppercase leading-none tracking-tighter mb-3 md:mb-4">
-          THE ART OF <span className="block md:inline italic font-medium opacity-80">PRECISION</span>
-        </h1>
-        <p className="font-display text-2xl md:text-3xl text-primary/70 tracking-wide mb-4 md:mb-6">
-          سيب نفسك
-        </p>
-        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto mb-8 md:mb-12 px-4">
-          حيث تجتمع الحلاقة الكلاسيكية مع العصرية. خبرة واحترافية في العناية بإطلالتك.
-        </p>
+        <div className="marquee-strip mb-6 md:mb-8 py-3 md:py-4 border-y border-primary/20 bg-surface/50">
+          <span className="text-primary/40 font-display-lg text-[8vw] md:text-6xl tracking-[0.3em]">
+            {t("hero.tagline")}
+          </span>
+        </div>
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4">
           <a
             href="/booking"
             className="px-8 md:px-10 py-4 bg-primary text-surface font-button text-button uppercase tracking-widest hover:opacity-90 transition-opacity duration-400 text-center"
           >
-            احجز موعدك الآن
+            {t("hero.book")}
           </a>
           <a
             href="/gallery"
             className="px-8 md:px-10 py-4 border border-primary text-primary font-button text-button uppercase tracking-widest hover:bg-primary/5 transition-all duration-400 text-center"
           >
-            شاهد أعمالنا
+            {t("hero.work")}
           </a>
         </div>
       </div>

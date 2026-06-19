@@ -3,24 +3,25 @@
 import { useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { useLang } from "@/lib/language-context";
 
 const servicesList = [
-  { id: "classic", name: "حلاقة شعر كلاسيكية" },
-  { id: "beard", name: "تهذيب وتصفيف اللحية" },
-  { id: "facial", name: "عناية كاملة بالوجه" },
-  { id: "modern", name: "حلاقة شبابية عصرية" },
-  { id: "kids", name: "قص أطفال" },
-  { id: "deepclean", name: "تنظيف عميق للبشرة" },
-  { id: "groom", name: "بكيدج العريس" },
+  { id: "classic", nameKey: "services.name1" },
+  { id: "beard", nameKey: "services.name2" },
+  { id: "facial", nameKey: "services.name3" },
+  { id: "modern", nameKey: "services.name4" },
+  { id: "kids", nameKey: "services.name5" },
+  { id: "deepclean", nameKey: "services.name6" },
+  { id: "groom", nameKey: "services.name7" },
 ];
 
-const barbers = [
-  { id: "any", name: "أول حلاق متاح", title: "متاح", desc: "اختر أقرب موعد متاح مع أي من حلاقينا" },
-  { id: "zeda", name: "زيدا", title: "المؤسس والحلاق الأول", desc: "١٥ سنة خبرة - مؤسس صالون ZEDA" },
-  { id: "moaz", name: "معاذ", title: "حلاق محترف", desc: "١٠ سنوات خبرة - خبير تشذيب اللحية" },
-  { id: "mustafa", name: "مصطفى", title: "حلاق متخصص", desc: "٨ سنوات خبرة - متخصص قص أطفال" },
-  { id: "mohamed", name: "محمد", title: "حلاق أول", desc: "١٢ سنة خبرة - خبير بكيدج العريس" },
-  { id: "abdullah", name: "عبدالله", title: "حلاق مبدع", desc: "٦ سنوات خبرة - مبدع قصات شبابية" },
+const barberData = [
+  { id: "any", nameKey: "booking.barber_any", titleKey: "booking.barber_any_title", descKey: "booking.barber_any_desc" },
+  { id: "zeda", nameKey: "team.name1", titleKey: "team.role1", descKey: "team.exp1" },
+  { id: "moaz", nameKey: "team.name2", titleKey: "team.role2", descKey: "team.exp2" },
+  { id: "mustafa", nameKey: "team.name3", titleKey: "team.role3", descKey: "team.exp3" },
+  { id: "mohamed", nameKey: "team.name4", titleKey: "team.role4", descKey: "team.exp4" },
+  { id: "abdullah", nameKey: "team.name5", titleKey: "team.role5", descKey: "team.exp5" },
 ];
 
 const timeSlots = [
@@ -28,7 +29,21 @@ const timeSlots = [
   "3:00 PM", "4:15 PM", "5:30 PM", "7:00 PM", "8:30 PM", "9:45 PM",
 ];
 
+const monthNamesAr = [
+  "يناير", "فبراير", "مارس", "ابريل", "مايو", "يونيو",
+  "يوليو", "اغسطس", "سبتمبر", "اكتوبر", "نوفمبر", "ديسمبر",
+];
+
+const monthNamesEn = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+const dayHeadersAr = ["ح", "ن", "ث", "ر", "خ", "ج", "س"];
+const dayHeadersEn = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
 export default function BookingPage() {
+  const { t, lang } = useLang();
   const [step, setStep] = useState(1);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [selectedBarber, setSelectedBarber] = useState("");
@@ -40,15 +55,25 @@ export default function BookingPage() {
     return new Date(now.getFullYear(), now.getMonth(), 1);
   });
 
+  const barbers = barberData.map((b) => ({
+    ...b,
+    name: t(b.nameKey),
+    title: t(b.titleKey),
+    desc: t(b.descKey),
+  }));
+
+  const services = servicesList.map((s) => ({
+    ...s,
+    name: t(s.nameKey),
+  }));
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
   const daysInMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
   const firstDayOfWeek = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
-  const monthNames = [
-    "يناير", "فبراير", "مارس", "ابريل", "مايو", "يونيو",
-    "يوليو", "اغسطس", "سبتمبر", "اكتوبر", "نوفمبر", "ديسمبر",
-  ];
+  const monthNames = lang === "ar" ? monthNamesAr : monthNamesEn;
+  const dayHeaders = lang === "ar" ? dayHeadersAr : dayHeadersEn;
 
   const toggleService = (id: string) => {
     setSelectedServices((prev) =>
@@ -73,29 +98,18 @@ export default function BookingPage() {
 
   const bookingSummary = [
     selectedServices.length > 0
-      ? `الخدمات: ${selectedServices.map((id) => servicesList.find((s) => s.id === id)?.name).join("، ")}`
+      ? `${t("booking.summary_services")}: ${selectedServices.map((id) => services.find((s) => s.id === id)?.name).join("، ")}`
       : "",
-    selectedBarber ? `الحلاق: ${barbers.find((b) => b.id === selectedBarber)?.name}` : "",
-    selectedDate && selectedTime ? `التاريخ: ${selectedDate} الساعة ${selectedTime}` : "",
+    selectedBarber ? `${t("booking.summary_barber")}: ${barbers.find((b) => b.id === selectedBarber)?.name}` : "",
+    selectedDate && selectedTime ? `${t("booking.summary_date")}: ${selectedDate} ${t("booking.summary_at")} ${selectedTime}` : "",
   ]
     .filter(Boolean)
     .join("\n");
-
-  const handleConfirm = () => {
-    const message = `حجز موعد في ZEDA BARBER SHOP
-------------------------
-${bookingSummary}
-------------------------
-الاسم: ${name}`;
-    const url = `https://wa.me/201069389235?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  };
 
   return (
     <>
       <Header />
       <main className="min-h-screen pt-28 pb-20 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto">
-        {/* Step indicator */}
         <div className="flex items-center gap-4 mb-16 justify-center">
           {[1, 2, 3, 4].map((s) => (
             <div key={s} className="flex items-center gap-4">
@@ -111,13 +125,12 @@ ${bookingSummary}
           ))}
         </div>
 
-        {/* Step 1: Services */}
         {step === 1 && (
           <section>
-            <h2 className="font-display-lg text-headline-md mb-8 text-center">اختر الخدمات</h2>
-            <p className="font-body-md text-on-surface-variant text-center mb-12">اختر الخدمات التي تريدها</p>
+            <h2 className="font-display-lg text-headline-md mb-8 text-center">{t("booking.step1")}</h2>
+            <p className="font-body-md text-on-surface-variant text-center mb-12">{t("booking.step1_desc")}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {servicesList.map((service) => (
+              {services.map((service) => (
                 <button
                   key={service.id}
                   onClick={() => toggleService(service.id)}
@@ -137,16 +150,15 @@ ${bookingSummary}
                 disabled={selectedServices.length === 0}
                 className="px-10 py-4 bg-primary text-surface font-button text-button uppercase tracking-widest disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
-                متابعة
+                {t("booking.next")}
               </button>
             </div>
           </section>
         )}
 
-        {/* Step 2: Barbers */}
         {step === 2 && (
           <section>
-            <h2 className="font-display-lg text-headline-md mb-8 text-center">اختر الحلاق</h2>
+            <h2 className="font-display-lg text-headline-md mb-8 text-center">{t("booking.step2")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {barbers.map((barber) => (
                 <button
@@ -169,23 +181,22 @@ ${bookingSummary}
                 onClick={() => setStep(1)}
                 className="px-8 py-3 border border-outline-variant text-on-surface-variant font-button text-button uppercase hover:bg-surface-variant transition-all"
               >
-                السابق
+                {t("booking.prev")}
               </button>
               <button
                 onClick={() => setStep(3)}
                 disabled={!selectedBarber}
                 className="px-10 py-4 bg-primary text-surface font-button text-button uppercase tracking-widest disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
-                متابعة
+                {t("booking.next")}
               </button>
             </div>
           </section>
         )}
 
-        {/* Step 3: Date & Time */}
         {step === 3 && (
           <section>
-            <h2 className="font-display-lg text-headline-md mb-8 text-center">اختر الموعد</h2>
+            <h2 className="font-display-lg text-headline-md mb-8 text-center">{t("booking.step3")}</h2>
             <div className="max-w-md mx-auto">
               <div className="flex items-center justify-between mb-8">
                 <button onClick={prevMonth} className="text-primary p-2">
@@ -199,7 +210,7 @@ ${bookingSummary}
                 </button>
               </div>
               <div className="grid grid-cols-7 gap-2 mb-6">
-                {["ح", "ن", "ث", "ر", "خ", "ج", "س"].map((d) => (
+                {dayHeaders.map((d) => (
                   <div key={d} className="text-center font-label-caps text-label-caps text-on-surface-variant py-2">
                     {d}
                   </div>
@@ -231,7 +242,7 @@ ${bookingSummary}
               </div>
               {selectedDate && (
                 <>
-                  <h3 className="font-display-lg text-headline-md mb-6 text-center">المواعيد المتاحة</h3>
+                  <h3 className="font-display-lg text-headline-md mb-6 text-center">{t("booking.available_times")}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {timeSlots.map((time) => (
                       <button
@@ -255,61 +266,60 @@ ${bookingSummary}
                 onClick={() => setStep(2)}
                 className="px-8 py-3 border border-outline-variant text-on-surface-variant font-button text-button uppercase hover:bg-surface-variant transition-all"
               >
-                السابق
+                {t("booking.prev")}
               </button>
               <button
                 onClick={() => setStep(4)}
                 disabled={!selectedDate || !selectedTime}
                 className="px-10 py-4 bg-primary text-surface font-button text-button uppercase tracking-widest disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
-                متابعة
+                {t("booking.next")}
               </button>
             </div>
           </section>
         )}
 
-        {/* Step 4: Name + Confirm */}
         {step === 4 && (
           <section>
-            <h2 className="font-display-lg text-headline-md mb-8 text-center">تأكيد الحجز</h2>
+            <h2 className="font-display-lg text-headline-md mb-8 text-center">{t("booking.step4")}</h2>
             <div className="max-w-md mx-auto space-y-8">
               <div>
-                <label className="font-label-caps text-label-caps text-primary block mb-2">الاسم كامل</label>
+                <label className="font-label-caps text-label-caps text-primary block mb-2">{t("booking.name_label")}</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="اكتب اسمك"
+                  placeholder={t("booking.name_placeholder")}
                   className="w-full p-4 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface font-body-md focus:border-primary focus:outline-none transition-colors"
                   dir="rtl"
                 />
               </div>
               <div className="p-6 rounded-lg bg-surface-container border border-outline-variant/30">
-                <h3 className="font-label-caps text-label-caps text-primary mb-4">ملخص الحجز</h3>
+                <h3 className="font-label-caps text-label-caps text-primary mb-4">{t("booking.summary")}</h3>
                 <div className="space-y-2 font-body-md">
                   {selectedServices.map((id) => {
-                    const s = servicesList.find((sv) => sv.id === id);
+                    const s = services.find((sv) => sv.id === id);
                     return s ? <p key={id} className="text-on-surface">{s.name}</p> : null;
                   })}
                   <p className="text-on-surface-variant">
-                    الحلاق: {barbers.find((b) => b.id === selectedBarber)?.name}
+                    {t("booking.summary_barber")}: {barbers.find((b) => b.id === selectedBarber)?.name}
                   </p>
                   <p className="text-on-surface-variant">
-                    الموعد: {selectedDate} الساعة {selectedTime}
+                    {t("booking.summary_date")}: {selectedDate} {t("booking.summary_at")} {selectedTime}
                   </p>
-                  {name && <p className="text-primary">الاسم: {name}</p>}
+                  {name && <p className="text-primary">{t("booking.name_label")}: {name}</p>}
                 </div>
               </div>
               <div className="flex flex-col gap-4">
                 <a
                   href={`https://wa.me/201069389235?text=${encodeURIComponent(
-                    `حجز موعد في ZEDA BARBER SHOP\n------------------------\n${selectedServices.map((id) => servicesList.find((s) => s.id === id)?.name).join("، ")}\nالحلاق: ${barbers.find((b) => b.id === selectedBarber)?.name}\nالموعد: ${selectedDate} الساعة ${selectedTime}\nالاسم: ${name || "لم يحدد"}`
+                    `حجز موعد في ZEDA BARBER SHOP\n------------------------\n${selectedServices.map((id) => services.find((s) => s.id === id)?.name).join("، ")}\nالحلاق: ${barbers.find((b) => b.id === selectedBarber)?.name}\nالموعد: ${selectedDate} الساعة ${selectedTime}\nالاسم: ${name || "لم يحدد"}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-5 bg-primary text-surface font-button text-button uppercase tracking-widest hover:opacity-90 transition-opacity disabled:opacity-30"
+                  className="w-full text-center py-5 bg-primary text-surface font-button text-button uppercase tracking-widest hover:opacity-90 transition-opacity"
                 >
-                  تأكيد عبر واتساب
+                  {t("booking.confirm")}
                 </a>
               </div>
             </div>
@@ -318,7 +328,7 @@ ${bookingSummary}
                 onClick={() => setStep(3)}
                 className="px-8 py-3 border border-outline-variant text-on-surface-variant font-button text-button uppercase hover:bg-surface-variant transition-all"
               >
-                السابق
+                {t("booking.prev")}
               </button>
             </div>
           </section>

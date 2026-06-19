@@ -49,19 +49,18 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="inline-block hover:opacity-80 transition-opacity"
                 >
-                  <img src="/images/logos/engaz-logo.png" alt="إنجاز ميديا" className="h-8 md:h-10 w-auto" />
+                  <img src="/images/logos/engaz-logo.png" alt="إنجاز ميديا" className="h-16 md:h-20 w-auto" />
                 </a>
-                <p className="text-xs mt-1">إنجاز ميديا</p>
               </div>
               <div>
                 <span className="text-primary font-label-caps text-xs block mb-1">واتساب المطور</span>
                 <a
-                  href="https://www.facebook.com/ahmedhassaan.dev"
+                  href="https://wa.me/201022677775"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:opacity-80 transition-opacity text-sm"
                 >
-                  facebook.com/ahmedhassaan.dev
+                  201022677775
                 </a>
               </div>
             </div>

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "~/.config/opencode/AGENTS.md"
+  ],
+  "formatter": true,
+  "lsp": true,
+  "snapshot": true,
+  "autoupdate": true,
+  "share": "manual",
+  "compaction": {
+    "auto": true,
+    "prune": false,
+    "reserved": 10000
+  },
+  "permission": {
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": "allow",
+    "question": "allow",
+    "todowrite": "allow",
+    "edit": "allow",
+    "bash": {
+      "*": "ask",
+      "npm run *": "allow",
+      "npx *": "allow",
+      "node *": "allow",
+      "git status*": "allow",
+      "git log*": "allow",
+      "git diff*": "allow",
+      "git branch*": "allow",
+      "grep *": "allow",
+      "find *": "allow",
+      "ls *": "allow",
+      "dir *": "allow",
+      "cat *": "allow",
+      "type *": "allow",
+      "echo *": "allow",
+      "pwd": "allow",
+      "cd *": "allow",
+      "mkdir *": "allow",
+      "New-Item *": "allow",
+      "Test-Path *": "allow",
+      "Get-ChildItem *": "allow"
+    },
+    "task": "allow",
+    "external_directory": "ask",
+    "doom_loop": "ask"
+  },
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      ".next/**",
+      ".vercel/**",
+      "dist/**",
+      "build/**",
+      ".git/**",
+      "test-results/**",
+      "screenshots/**"
+    ]
+  },
+  "subagent_depth": 2
+}

@@ -1,0 +1,9 @@
+﻿node_modules
+.next
+screenshots
+public/video/hero.mp4
+test-db.mjs
+e2e-homepage.png
+push-v1.2.ps1
+_push.ps1
+push-v1.2.bat

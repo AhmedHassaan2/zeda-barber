@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/schema.json",
+  "name": "zeda-barbershop",
+  "version": "1.0.0",
+  "description": "ZEDA Barbershop - Bilingual booking and management platform",
+  "instructions": "This is a bilingual (Arabic/English) barbershop website with online booking, service management, and admin dashboard. Follow RTL-first design with Material Design 3 color tokens.",
+  "permissions": {
+    "bash": {
+      "allow": [
+        "npm run *",
+        "npx *",
+        "git *",
+        "mkdir *",
+        "ls *",
+        "cat *",
+        "node *"
+      ],
+      "deny": [
+        "rm -rf *",
+        "sudo *",
+        "chmod 777 *"
+      ]
+    },
+    "read": {
+      "allow": ["**/*"],
+      "deny": [".env", ".env.local", "node_modules/**"]
+    },
+    "write": {
+      "allow": ["src/**", "public/**", ".opencode/**"],
+      "deny": [".env", ".env.local", "node_modules/**", "package.json", "package-lock.json"]
+    },
+    "edit": {
+      "allow": ["src/**", "public/**", ".opencode/**"],
+      "deny": [".env", ".env.local", "node_modules/**", "package.json", "package-lock.json"]
+    }
+  },
+  "watcher": {
+    "enabled": true,
+    "patterns": ["src/**/*.{ts,tsx}", ".opencode/**/*"],
+    "debounce": 300
+  },
+  "compaction": {
+    "enabled": true,
+    "reserved_tokens": 10000
+  }
+}

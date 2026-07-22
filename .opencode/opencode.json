@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "This is a bilingual (Arabic/English) barbershop website with online booking, service management, and admin dashboard. Follow RTL-first design with Material Design 3 color tokens."
+  ],
+  "watcher": {
+    "enabled": true,
+    "patterns": [
+      "src/**/*.{ts,tsx}",
+      ".opencode/**/*"
+    ],
+    "debounce": 300
+  },
+  "compaction": {
+    "enabled": true,
+    "reserved": 10000
+  }
+}

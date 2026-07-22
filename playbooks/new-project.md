@@ -51,8 +51,7 @@ Create `.opencode/AGENTS.md` with:
 
 ```json
 {
-  "name": "project-name",
-  "description": "Project description",
+  "$schema": "https://opencode.ai/config.json",
   "instructions": [".opencode/AGENTS.md"]
 }
 ```

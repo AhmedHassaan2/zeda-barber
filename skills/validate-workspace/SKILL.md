@@ -33,10 +33,9 @@ Comprehensive workspace validation that checks integrity, consistency, and healt
 ```markdown
 **Check:** opencode.json validity
 - [ ] File exists and is valid JSON/JSONC
-- [ ] Required fields present (name, instructions)
-- [ ] No duplicate instruction paths
-- [ ] Instruction files actually exist
-- [ ] Permissions array is valid
+- [ ] No unrecognized keys (schema validation)
+- [ ] Instructions array contains valid paths (if present)
+- [ ] Permission object contains valid keys (if present)
 ```
 
 ### 2. Agent Validation

@@ -68,11 +68,11 @@ server.resource(
 ```json
 // opencode.json
 {
-  "mcpServers": {
+  "mcp": {
     "my-server": {
-      "command": "node",
-      "args": ["./mcp-server.js"],
-      "env": {
+      "type": "local",
+      "command": ["node", "./mcp-server.js"],
+      "environment": {
         "API_KEY": "${MY_API_KEY}"
       }
     }

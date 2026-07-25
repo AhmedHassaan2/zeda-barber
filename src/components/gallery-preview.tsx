@@ -32,12 +32,13 @@ export default function GalleryPreview() {
       </div>
       <div className="grid grid-cols-3 gap-3 md:gap-4">
         {images.slice(0, 6).map((src, i) => (
-          <div key={i} className="overflow-hidden group relative">
+          <div key={i} className="overflow-hidden group relative cursor-pointer">
             <img
               src={src}
               alt={`Gallery ${i + 1}`}
-              className="w-full h-full object-cover aspect-[4/5] transition-all duration-[2000ms] group-hover:scale-110 grayscale"
+              className="w-full h-full object-cover aspect-[4/5] transition-all duration-700 group-hover:scale-110 img-grayscale"
             />
+            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 pointer-events-none"></div>
           </div>
         ))}
       </div>

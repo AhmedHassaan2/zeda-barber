@@ -64,6 +64,7 @@ const config: Config = {
         "label-caps": ["var(--font-cairo)", "sans-serif"],
         "display-lg": ["var(--font-cairo)", "sans-serif"],
         "headline-lg": ["var(--font-cairo)", "sans-serif"],
+        tagline: ["var(--font-amiri)", "serif"],
       },
       fontSize: {
         "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],

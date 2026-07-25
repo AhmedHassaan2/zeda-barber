@@ -3,16 +3,16 @@
 import Link from "next/link";
 import { useLang } from "@/lib/language-context";
 
+const barbersData = [
+  { name: "team.name1", role: "team.role1", exp: "team.exp1", img: "/images/barbers/zeda.jpg", initial: "ز" },
+  { name: "team.name2", role: "team.role2", exp: "team.exp2", img: "/images/barbers/moaz-allam.jpg", initial: "م" },
+  { name: "team.name3", role: "team.role3", exp: "team.exp3", img: "/images/barbers/mostafa-tarek.jpg", initial: "م" },
+  { name: "team.name4", role: "team.role4", exp: "team.exp4", img: "/images/barbers/moaz-tarek.jpg", initial: "م" },
+  { name: "team.name5", role: "team.role5", exp: "team.exp5", img: "/images/barbers/ahmed-mohamed.jpg", initial: "ع" },
+];
+
 export default function Team() {
   const { t } = useLang();
-
-  const barbers = [
-    { name: t("team.name1"), role: t("team.role1"), exp: t("team.exp1") },
-    { name: t("team.name2"), role: t("team.role2"), exp: t("team.exp2") },
-    { name: t("team.name3"), role: t("team.role3"), exp: t("team.exp3") },
-    { name: t("team.name4"), role: t("team.role4"), exp: t("team.exp4") },
-    { name: t("team.name5"), role: t("team.role5"), exp: t("team.exp5") },
-  ];
 
   return (
     <section className="py-section-gap">
@@ -23,37 +23,31 @@ export default function Team() {
           {t("team.desc")}
         </p>
       </div>
-      <div className="w-full relative overflow-hidden group border-y border-outline-variant/20">
-        <img
-          className="w-full object-cover min-h-[350px] md:min-h-[500px] grayscale group-hover:grayscale-0 transition-all duration-[2000ms]"
-          src="/images/team/ZEDA.svg"
-          alt="ZEDA Team"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-transparent pointer-events-none"></div>
-      </div>
-      <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-8">
-        <div className="bg-surface-container border border-outline-variant/20 rounded-lg p-6 md:p-8">
-          <div className="flex flex-wrap justify-center gap-x-10 md:gap-x-16 gap-y-8">
-            {barbers.map((barber, i) => (
-              <Link
-                key={i}
-                href="/booking"
-                className="flex flex-col items-center gap-2 group/barber text-center"
-              >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center group-hover/barber:bg-primary/20 group-hover/barber:border-primary transition-all duration-400">
-                  <span className="font-display-lg text-headline-md text-primary">{barber.name.charAt(0)}</span>
-                </div>
-                <div className="text-center">
-                  <span className="font-display-lg text-headline-sm block leading-tight group-hover/barber:text-primary transition-colors duration-400">
-                    {barber.name}
-                  </span>
-                  <span className="font-label-caps text-label-caps text-primary/60 text-[10px] md:text-xs tracking-wider">
-                    {barber.role}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+      <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+          {barbersData.map((barber, i) => (
+            <Link
+              key={i}
+              href="/booking"
+              className="group/barber relative overflow-hidden rounded-lg aspect-[3/4] hover-lift animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <img
+                src={barber.img}
+                alt={t(barber.name)}
+                className="w-full h-full object-cover img-grayscale group-hover/barber:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+                <span className="font-display-lg text-headline-md text-primary block group-hover/barber:text-white transition-colors duration-400">
+                  {t(barber.name)}
+                </span>
+                <span className="font-label-caps text-label-caps text-on-surface-variant text-[10px] md:text-xs tracking-wider">
+                  {t(barber.role)}
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

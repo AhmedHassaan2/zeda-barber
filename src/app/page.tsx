@@ -20,7 +20,7 @@ export default function HomePage() {
         <GalleryPreview />
         <Team />
         <section className="relative py-32 overflow-hidden border-t border-outline-variant/30">
-          <div className="relative z-10 px-margin-mobile md:px-margin-desktop text-center max-w-3xl mx-auto">
+          <div className="relative z-10 px-margin-mobile md:px-margin-desktop text-center max-w-3xl mx-auto animate-fade-in-up">
             <h2 className="font-display-lg text-display-lg-mobile md:text-display-lg uppercase mb-12 tracking-tight">
               {t("cta.title")}
             </h2>
@@ -30,13 +30,13 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <a
                 href="/booking"
-                className="px-12 py-5 bg-primary text-surface font-button text-button uppercase tracking-widest hover:opacity-90 transition-opacity duration-400"
+                className="px-12 py-5 bg-primary text-surface font-button text-button uppercase tracking-widest hover:bg-primary/90 hover:scale-105 transition-all duration-400 shadow-lg shadow-primary/20"
               >
                 {t("cta.book")}
               </a>
               <a
                 href="/services"
-                className="px-12 py-5 border border-primary text-primary font-button text-button uppercase tracking-widest hover:bg-primary/5 transition-all duration-400"
+                className="px-12 py-5 border border-primary text-primary font-button text-button uppercase tracking-widest hover:bg-primary hover:text-surface transition-all duration-400"
               >
                 {t("cta.services")}
               </a>

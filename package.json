@@ -21,7 +21,6 @@
     "tailwindcss": "^3.4.19",
     "typescript": "^6.0.3",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^16.0.0",
-    "@eslint/flatcompat": "^0.5.0"
+    "eslint-config-next": "^16.0.0"
   }
 }

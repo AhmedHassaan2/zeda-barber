@@ -6,7 +6,7 @@ export default function Hero() {
   const { t } = useLang();
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-surface">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
@@ -18,15 +18,15 @@ export default function Hero() {
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-surface/20"></div>
       </div>
-      <div className="relative z-10 text-center px-4 w-full max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-4 w-full max-w-5xl mx-auto flex flex-col items-center">
         <img
           src="/images/logos/zeda-logo.png"
           alt="ZEDA"
-          className="h-36 md:h-48 w-auto mx-auto mb-6 md:mb-8"
+          className="h-48 md:h-64 w-auto mx-auto mb-6 md:mb-8 drop-shadow-2xl"
         />
-        <div className="marquee-strip mb-6 md:mb-8 py-3 md:py-4 border-y border-primary/20 bg-surface/50">
+        <div className="marquee-strip mb-6 md:mb-8 py-3 md:py-4 border-y border-primary/20 bg-surface/60 backdrop-blur-sm">
           <span className="text-primary/40 font-display-lg text-[8vw] md:text-6xl tracking-[0.3em]">
             {t("hero.tagline")}
           </span>

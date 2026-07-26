@@ -38,6 +38,10 @@ export default function GalleryPage() {
               <span className="font-label-caps text-label-caps text-primary block mb-4">{t("gallery.subtitle")}</span>
               <h1 className="font-display-lg text-headline-lg">{t("gallery.title")}</h1>
               <p className="font-body-lg text-body-lg text-on-surface-variant mt-4">{t("gallery.desc")}</p>
+              <p className="text-on-surface-variant text-sm mt-3 flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary text-base">style</span>
+                اختر استايلك من المعرض واضغط &quot;احجز بأسلوبك&quot;
+              </p>
             </div>
           </div>
         </div>
@@ -45,6 +49,7 @@ export default function GalleryPage() {
           <GalleryGrid images={images} />
         </div>
       </main>
+      <div className="h-32 bg-gradient-to-b from-surface to-black"></div>
       <Footer />
     </>
   );

@@ -62,6 +62,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+      <div className="h-32 bg-gradient-to-b from-surface to-black"></div>
       <Footer />
     </>
   );

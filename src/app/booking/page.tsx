@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useLang } from "@/lib/language-context";
@@ -43,7 +44,17 @@ const dayHeadersAr = ["ح", "ن", "ث", "ر", "خ", "ج", "س"];
 const dayHeadersEn = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 export default function BookingPage() {
+  return (
+    <Suspense fallback={null}>
+      <BookingContent />
+    </Suspense>
+  );
+}
+
+function BookingContent() {
   const { t, lang } = useLang();
+  const searchParams = useSearchParams();
+  const styleImage = searchParams.get("style") || "";
   const [step, setStep] = useState(1);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [selectedBarber, setSelectedBarber] = useState("");
@@ -297,6 +308,15 @@ export default function BookingPage() {
               <div className="p-6 rounded-lg bg-surface-container border border-outline-variant/30">
                 <h3 className="font-label-caps text-label-caps text-primary mb-4">{t("booking.summary")}</h3>
                 <div className="space-y-2 font-body-md">
+                  {styleImage && (
+                    <div className="flex items-center gap-3 pb-3 border-b border-outline-variant/30">
+                      <img src={styleImage} alt="" className="w-12 h-12 rounded object-cover" />
+                      <div>
+                        <p className="text-on-surface text-sm font-bold">الاستايل المختار</p>
+                        <p className="text-on-surface-variant text-xs">تم اختيار الصورة من المعرض</p>
+                      </div>
+                    </div>
+                  )}
                   {selectedServices.map((id) => {
                     const s = services.find((sv) => sv.id === id);
                     return s ? <p key={id} className="text-on-surface">{s.name}</p> : null;
@@ -313,7 +333,7 @@ export default function BookingPage() {
               <div className="flex flex-col gap-4">
                 <a
                   href={`https://wa.me/201069389235?text=${encodeURIComponent(
-                    `حجز موعد في ZEDA BARBER SHOP\n------------------------\n${selectedServices.map((id) => services.find((s) => s.id === id)?.name).join("، ")}\nالحلاق: ${barbers.find((b) => b.id === selectedBarber)?.name}\nالموعد: ${selectedDate} الساعة ${selectedTime}\nالاسم: ${name || "لم يحدد"}`
+                    `حجز موعد في ZEDA BARBER SHOP\n------------------------\n${styleImage ? "الاستايل: " + styleImage + "\n" : ""}${selectedServices.map((id) => services.find((s) => s.id === id)?.name).join("، ")}\nالحلاق: ${barbers.find((b) => b.id === selectedBarber)?.name}\nالموعد: ${selectedDate} الساعة ${selectedTime}\nالاسم: ${name || "لم يحدد"}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -334,6 +354,7 @@ export default function BookingPage() {
           </section>
         )}
       </main>
+      <div className="h-32 bg-gradient-to-b from-surface to-black"></div>
       <Footer />
     </>
   );

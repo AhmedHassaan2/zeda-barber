@@ -8,12 +8,16 @@ export default function GalleryLightbox({
   onClose,
   onPrev,
   onNext,
+  onSelect,
+  isSelected,
 }: {
   images: string[];
   currentIndex: number;
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  onSelect?: (src: string) => void;
+  isSelected?: boolean;
 }) {
   const thumbRef = useRef<HTMLDivElement>(null);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -126,6 +130,22 @@ export default function GalleryLightbox({
           </button>
         ))}
       </div>
+
+      {/* Book this style button */}
+      {onSelect && (
+        <div className="px-4 md:px-8 pb-4 flex justify-center" onClick={(e) => e.stopPropagation()}>
+          <a
+            href={`/booking?style=${encodeURIComponent(images[currentIndex])}`}
+            className={`px-8 py-3 font-button text-sm uppercase tracking-wider rounded transition-all duration-300 ${
+              isSelected
+                ? "bg-surface border border-primary text-primary"
+                : "bg-primary text-surface hover:bg-primary/90"
+            }`}
+          >
+            {isSelected ? "تم الاختيار — احجز الآن" : "احجز بأسلوبك"}
+          </a>
+        </div>
+      )}
     </div>
   );
 }

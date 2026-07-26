@@ -230,14 +230,24 @@ html {
   border-image: linear-gradient(135deg, #e9c176, rgba(233,193,118,0.3), #e9c176) 1;
 }
 
-/* Golden icon filter - makes PNG icons match site gold color */
+/* Golden icon filter - soft warm amber gold matching site primary */
 .icon-golden {
-  filter: brightness(0) invert(73%) sepia(42%) saturate(500%) hue-rotate(355deg) brightness(100%) contrast(90%);
+  filter: brightness(0) invert(80%) sepia(25%) saturate(400%) hue-rotate(355deg) brightness(95%) contrast(85%);
   transition: filter 0.4s ease;
 }
 
 .icon-golden:hover {
-  filter: brightness(0) invert(73%) sepia(42%) saturate(600%) hue-rotate(355deg) brightness(110%) contrast(95%);
+  filter: brightness(0) invert(85%) sepia(20%) saturate(350%) hue-rotate(355deg) brightness(100%) contrast(85%);
+}
+
+/* Services icon - only color the black lines, preserve white fills */
+.icon-lines-only {
+  filter: brightness(0) invert(80%) sepia(25%) saturate(400%) hue-rotate(355deg) brightness(95%) contrast(85%);
+  transition: filter 0.4s ease;
+}
+
+.icon-lines-only:hover {
+  filter: brightness(0) invert(85%) sepia(20%) saturate(350%) hue-rotate(355deg) brightness(100%) contrast(85%);
 }
 
 /* Gradient section dividers */
@@ -257,15 +267,15 @@ html {
 
 /* Gallery carousel */
 
-/* ZEDA Facade - remove background, apply white-to-gold gradient */
+/* ZEDA Facade - processed with transparent background + gold gradient */
 .zeda-facade {
-  mix-blend-mode: screen;
-  filter: grayscale(100%) brightness(1.2) contrast(1.1);
-  transition: filter 0.5s ease;
+  filter: drop-shadow(0 0 20px rgba(233,193,118,0.15));
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
 
 .zeda-facade:hover {
-  filter: grayscale(0%) brightness(1) contrast(1);
+  filter: drop-shadow(0 0 30px rgba(233,193,118,0.3));
+  transform: scale(1.02);
 }
 
 /* Section gradient transitions - smooth blending between sections */

@@ -58,7 +58,7 @@ export default function Team() {
           ))}
         </div>
         {/* ZEDA Facade */}
-        <div className="mt-12 md:mt-16 flex justify-center">
+        <div className="mt-6 md:mt-10 flex justify-center">
           <img
             src="/images/zeda-facade.png"
             alt="ZEDA Barber Shop"

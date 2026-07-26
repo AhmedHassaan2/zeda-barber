@@ -1,0 +1,81 @@
+- generic [active] [ref=f6e1]:
+  - generic [ref=f6e2]:
+    - banner [ref=f6e3]:
+      - generic [ref=f6e4]:
+        - link [ref=f6e5] [cursor=pointer]:
+          - /url: /
+          - img "ZEDA" [ref=f6e6]
+        - navigation [ref=f6e7]:
+          - link "الرئيسية" [ref=f6e8] [cursor=pointer]:
+            - /url: /
+          - link "الخدمات" [ref=f6e9] [cursor=pointer]:
+            - /url: /services
+          - link "معرض الأعمال" [ref=f6e10] [cursor=pointer]:
+            - /url: /gallery
+          - link "اتصل بنا" [ref=f6e11] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=f6e12]:
+          - button "Toggle language" [ref=f6e13] [cursor=pointer]: EN
+          - link "احجز الآن" [ref=f6e14] [cursor=pointer]:
+            - /url: /booking
+    - main [ref=f6e15]:
+      - generic [ref=f6e16]:
+        - link "arrow_forward العودة للرئيسية" [ref=f6e17] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f6e18]: arrow_forward
+          - text: العودة للرئيسية
+        - generic [ref=f6e19]:
+          - generic [ref=f6e20]: CONTACT
+          - heading "تواصل معنا" [level=1] [ref=f6e21]
+          - paragraph [ref=f6e22]: كرسيك في انتظارك. تواصل معنا للحجز أو الاستفسار. فريق ZEDA جاهز لخدمتك.
+        - generic [ref=f6e23]:
+          - generic [ref=f6e24]:
+            - generic [ref=f6e25]:
+              - heading "العنوان" [level=3] [ref=f6e26]
+              - paragraph [ref=f6e27]: كفرتصفا - كفرشكر - قليوبية
+            - generic [ref=f6e28]:
+              - heading "الهاتف" [level=3] [ref=f6e29]
+              - paragraph [ref=f6e30]: "01069389235"
+            - generic [ref=f6e31]:
+              - heading "مواعيد العمل" [level=3] [ref=f6e32]
+              - paragraph [ref=f6e33]: "السبت — الخميس: ١٠ص — ١١م"
+              - paragraph [ref=f6e34]: "الجمعة: بالحجز المسبق"
+            - link "احجز الآن" [ref=f6e35] [cursor=pointer]:
+              - /url: /booking
+          - iframe [ref=f6e37]:
+            - link "Open in Maps (opens in new tab)" [ref=f7e4] [cursor=pointer]:
+              - /url: undefined
+              - text: Open in Maps
+    - contentinfo [ref=f6e38]:
+      - generic [ref=f6e39]:
+        - generic [ref=f6e40]:
+          - generic [ref=f6e41]:
+            - heading "بيانات الاتصال" [level=4] [ref=f6e42]
+            - generic [ref=f6e43]:
+              - generic [ref=f6e44]:
+                - generic [ref=f6e45]: location_on
+                - paragraph [ref=f6e46]: كفرتصفا - كفرشكر قليوبية
+              - generic [ref=f6e47]:
+                - generic [ref=f6e48]: schedule
+                - paragraph [ref=f6e49]: "السبت — الخميس: ١٠ص — ١١م الجمعة: بالحجز المسبق"
+              - generic [ref=f6e50]:
+                - generic [ref=f6e51]: call
+                - link "01069389235" [ref=f6e52] [cursor=pointer]:
+                  - /url: tel:01069389235
+              - link "واتساب" [ref=f6e53] [cursor=pointer]:
+                - /url: https://wa.me/201069389235
+          - generic [ref=f6e57]:
+            - heading "المطور" [level=4] [ref=f6e58]
+            - generic [ref=f6e59]:
+              - generic [ref=f6e60]:
+                - generic [ref=f6e61]: person
+                - link "Ahmed Hassaan" [ref=f6e62] [cursor=pointer]:
+                  - /url: https://www.facebook.com/ahmedhassaan.dev
+              - link "إنجاز ميديا إنجاز ميديا" [ref=f6e64] [cursor=pointer]:
+                - /url: https://engaz-media.vercel.app
+                - img "إنجاز ميديا" [ref=f6e65]
+                - generic [ref=f6e66]: إنجاز ميديا
+              - link "201022677775" [ref=f6e70] [cursor=pointer]:
+                - /url: https://wa.me/201022677775
+        - paragraph [ref=f6e72]: © 2026 ZEDA BARBER SHOP. All rights reserved.
+  - alert [ref=f6e73]

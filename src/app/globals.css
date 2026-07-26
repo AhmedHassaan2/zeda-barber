@@ -154,3 +154,58 @@ html {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(233, 193, 118, 0.15);
 }
+
+.gold-glow {
+  box-shadow: 0 0 20px rgba(233, 193, 118, 0.1), 0 0 60px rgba(233, 193, 118, 0.05);
+}
+
+.gold-glow:hover {
+  box-shadow: 0 0 30px rgba(233, 193, 118, 0.2), 0 0 80px rgba(233, 193, 118, 0.1);
+}
+
+@keyframes text-reveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.animate-text-reveal {
+  animation: text-reveal 0.8s ease-out both;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(233,193,118,0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(233, 193, 118, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(233, 193, 118, 0); }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
+.stagger-5 { animation-delay: 500ms; }
+.stagger-6 { animation-delay: 600ms; }
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #e9c176 0%, #f5d998 50%, #e9c176 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #e9c176, rgba(233,193,118,0.3), #e9c176) 1;
+}

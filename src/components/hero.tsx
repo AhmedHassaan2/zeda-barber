@@ -26,8 +26,8 @@ export default function Hero() {
           alt="ZEDA"
           className="h-48 md:h-64 w-auto mx-auto mb-6 md:mb-8 drop-shadow-2xl"
         />
-        <div className="mb-6 md:mb-8 py-3 md:py-4 bg-surface/50 backdrop-blur-md rounded-sm px-8 md:px-16">
-          <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "var(--font-amiri), serif" }}>
+        <div className="marquee-strip mb-6 md:mb-8 py-3 md:py-4 bg-surface/50 backdrop-blur-md shadow-xl shadow-black/30 w-full">
+          <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide whitespace-nowrap" style={{ fontFamily: "var(--font-amiri), serif" }}>
             {t("hero.tagline")}
           </span>
         </div>
@@ -39,15 +39,12 @@ export default function Hero() {
             {t("hero.book")}
           </a>
           <a
-            href="/gallery"
+            href="/contact"
             className="px-8 md:px-10 py-4 border border-primary text-primary font-button text-button uppercase tracking-widest hover:bg-primary hover:text-surface transition-all duration-400 text-center"
           >
             {t("hero.work")}
           </a>
         </div>
-      </div>
-      <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10">
-        <div className="w-px h-12 md:h-16 bg-primary mx-auto animate-pulse"></div>
       </div>
     </section>
   );

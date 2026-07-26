@@ -45,10 +45,10 @@ export default function Services() {
             <Link
               key={index}
               href="/booking"
-              className="group relative py-8 md:py-10 flex items-center gap-6 transition-all duration-400 hover:px-6"
+              className={`group relative py-8 md:py-10 flex items-center gap-6 transition-all duration-400 hover:px-6 animate-fade-in-up stagger-${index + 1}`}
             >
               <div className="absolute left-0 top-0 bottom-0 w-0 bg-primary/5 transition-all duration-400 group-hover:w-full -z-10"></div>
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl opacity-60 group-hover:opacity-100 transition-opacity duration-400">
+              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl opacity-60 group-hover:opacity-100 transition-opacity duration-400 group-hover:scale-110">
                 {serviceIcons[index]}
               </span>
               <div className="flex-1 flex items-baseline gap-4">

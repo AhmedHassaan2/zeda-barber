@@ -1,0 +1,178 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]:
+    - banner [ref=f5e3]:
+      - generic [ref=f5e4]:
+        - link [ref=f5e5] [cursor=pointer]:
+          - /url: /
+          - img "ZEDA" [ref=f5e6]
+        - navigation [ref=f5e7]:
+          - link "الرئيسية" [ref=f5e8] [cursor=pointer]:
+            - /url: /
+          - link "الخدمات" [ref=f5e9] [cursor=pointer]:
+            - /url: /services
+          - link "معرض الأعمال" [ref=f5e10] [cursor=pointer]:
+            - /url: /gallery
+          - link "اتصل بنا" [ref=f5e11] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=f5e12]:
+          - button "Toggle language" [ref=f5e13] [cursor=pointer]: EN
+          - link "احجز الآن" [ref=f5e14] [cursor=pointer]:
+            - /url: /booking
+    - main [ref=f5e15]:
+      - generic [ref=f5e20]:
+        - img "ZEDA" [ref=f5e21]
+        - generic [ref=f5e22]: سيب نفسك
+        - generic [ref=f5e23]:
+          - link "احجز موعدك الآن" [ref=f5e24] [cursor=pointer]:
+            - /url: /booking
+          - link "شاهد أعمالنا" [ref=f5e25] [cursor=pointer]:
+            - /url: /gallery
+      - generic [ref=f5e29]:
+        - generic [ref=f5e30]:
+          - generic [ref=f5e31]:
+            - generic [ref=f5e32]: OUR SERVICES
+            - heading "خدماتنا" [level=2] [ref=f5e33]
+          - paragraph [ref=f5e35]: نقدم لكم مجموعة متكاملة من خدمات الحلاقة والعناية
+        - generic [ref=f5e36]:
+          - link "content_cut حلاقة شعر كلاسيكية حلاقة عصرية بتقنيات كلاسيكية احترافية تناسب جميع أنواع الشعر. احجز arrow_forward" [ref=f5e37] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e38]: content_cut
+            - heading "حلاقة شعر كلاسيكية" [level=3] [ref=f5e40]
+            - generic [ref=f5e41]: حلاقة عصرية بتقنيات كلاسيكية احترافية تناسب جميع أنواع الشعر.
+            - generic [ref=f5e42]: احجز
+            - generic [ref=f5e43]: arrow_forward
+          - link "face تهذيب وتصفيف اللحية تشذيب وتصفيف اللحية بأعلى دقة باستخدام أفضل المنتجات. احجز arrow_forward" [ref=f5e44] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e45]: face
+            - heading "تهذيب وتصفيف اللحية" [level=3] [ref=f5e47]
+            - generic [ref=f5e48]: تشذيب وتصفيف اللحية بأعلى دقة باستخدام أفضل المنتجات.
+            - generic [ref=f5e49]: احجز
+            - generic [ref=f5e50]: arrow_forward
+          - link "spa عناية كاملة بالوجه جلسة عناية متكاملة للبشرة تشمل تنظيف وترطيب وتدليك. احجز arrow_forward" [ref=f5e51] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e52]: spa
+            - heading "عناية كاملة بالوجه" [level=3] [ref=f5e54]
+            - generic [ref=f5e55]: جلسة عناية متكاملة للبشرة تشمل تنظيف وترطيب وتدليك.
+            - generic [ref=f5e56]: احجز
+            - generic [ref=f5e57]: arrow_forward
+          - link "auto_fix_high حلاقة شبابية عصرية أحدث صيحات الحلاقة الشبابية العصرية والمودرن. احجز arrow_forward" [ref=f5e58] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e59]: auto_fix_high
+            - heading "حلاقة شبابية عصرية" [level=3] [ref=f5e61]
+            - generic [ref=f5e62]: أحدث صيحات الحلاقة الشبابية العصرية والمودرن.
+            - generic [ref=f5e63]: احجز
+            - generic [ref=f5e64]: arrow_forward
+          - link "child_care قص أطفال قص شعر الأطفال بأسلوب لطيف ومريح يناسب جميع الأعمار. احجز arrow_forward" [ref=f5e65] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e66]: child_care
+            - heading "قص أطفال" [level=3] [ref=f5e68]
+            - generic [ref=f5e69]: قص شعر الأطفال بأسلوب لطيف ومريح يناسب جميع الأعمار.
+            - generic [ref=f5e70]: احجز
+            - generic [ref=f5e71]: arrow_forward
+          - link "cleaning_services تنظيف عميق للبشرة إزالة الرؤوس السوداء وتنظيف عميق للبشرة بمستحضرات طبيعية. احجز arrow_forward" [ref=f5e72] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e73]: cleaning_services
+            - heading "تنظيف عميق للبشرة" [level=3] [ref=f5e75]
+            - generic [ref=f5e76]: إزالة الرؤوس السوداء وتنظيف عميق للبشرة بمستحضرات طبيعية.
+            - generic [ref=f5e77]: احجز
+            - generic [ref=f5e78]: arrow_forward
+          - link "favorite بكيدج العريس باقة متكاملة للعريس تشمل حلاقة وتصفيف وعناية كاملة. احجز arrow_forward" [ref=f5e79] [cursor=pointer]:
+            - /url: /booking
+            - generic [ref=f5e80]: favorite
+            - heading "بكيدج العريس" [level=3] [ref=f5e82]
+            - generic [ref=f5e83]: باقة متكاملة للعريس تشمل حلاقة وتصفيف وعناية كاملة.
+            - generic [ref=f5e84]: احجز
+            - generic [ref=f5e85]: arrow_forward
+      - generic [ref=f5e86]:
+        - generic [ref=f5e87]:
+          - generic [ref=f5e88]:
+            - generic [ref=f5e89]: OUR GALLERY
+            - heading "معرض أعمالنا" [level=2] [ref=f5e90]
+          - link "عرض الكل arrow_forward" [ref=f5e91] [cursor=pointer]:
+            - /url: /gallery
+            - text: عرض الكل
+            - generic [ref=f5e92]: arrow_forward
+        - generic [ref=f5e93]:
+          - img "Gallery 1" [ref=f5e95] [cursor=pointer]
+          - img "Gallery 2" [ref=f5e97] [cursor=pointer]
+          - img "Gallery 3" [ref=f5e99] [cursor=pointer]
+          - img "Gallery 4" [ref=f5e101] [cursor=pointer]
+          - img "Gallery 5" [ref=f5e103] [cursor=pointer]
+          - img "Gallery 6" [ref=f5e105] [cursor=pointer]
+      - generic [ref=f5e106]:
+        - generic [ref=f5e107]:
+          - generic [ref=f5e108]: OUR TEAM
+          - heading "فريق العمل" [level=2] [ref=f5e109]
+          - paragraph [ref=f5e110]: فريق متكامل من أمهر الحلاقين لتقديم أفضل تجربة. كل أعضاء فريقنا مدربون على أحدث التقنيات.
+        - generic [ref=f5e112]:
+          - link "زيدا زيدا المؤسس والحلاق الأول" [ref=f5e113] [cursor=pointer]:
+            - /url: /booking
+            - img "زيدا" [ref=f5e114]
+            - generic [ref=f5e116]:
+              - generic [ref=f5e117]: زيدا
+              - text: المؤسس والحلاق الأول
+          - link "معاذ معاذ حلاق محترف" [ref=f5e118] [cursor=pointer]:
+            - /url: /booking
+            - img "معاذ" [ref=f5e119]
+            - generic [ref=f5e121]:
+              - generic [ref=f5e122]: معاذ
+              - text: حلاق محترف
+          - link "مصطفى مصطفى حلاق متخصص" [ref=f5e123] [cursor=pointer]:
+            - /url: /booking
+            - img "مصطفى" [ref=f5e124]
+            - generic [ref=f5e126]:
+              - generic [ref=f5e127]: مصطفى
+              - text: حلاق متخصص
+          - link "محمد محمد حلاق أول" [ref=f5e128] [cursor=pointer]:
+            - /url: /booking
+            - img "محمد" [ref=f5e129]
+            - generic [ref=f5e131]:
+              - generic [ref=f5e132]: محمد
+              - text: حلاق أول
+          - link "عبدالله عبدالله حلاق مبدع" [ref=f5e133] [cursor=pointer]:
+            - /url: /booking
+            - img "عبدالله" [ref=f5e134]
+            - generic [ref=f5e136]:
+              - generic [ref=f5e137]: عبدالله
+              - text: حلاق مبدع
+      - generic [ref=f5e139]:
+        - heading "كرسيك مستنيك" [level=2] [ref=f5e140]
+        - paragraph [ref=f5e141]: تواصل معنا للحجز أو الاستفسار. فريق ZEDA جاهز لخدمتك.
+        - generic [ref=f5e142]:
+          - link "احجز موعدك الآن" [ref=f5e143] [cursor=pointer]:
+            - /url: /booking
+          - link "جميع الخدمات" [ref=f5e144] [cursor=pointer]:
+            - /url: /services
+    - contentinfo [ref=f5e145]:
+      - generic [ref=f5e146]:
+        - generic [ref=f5e147]:
+          - generic [ref=f5e148]:
+            - heading "بيانات الاتصال" [level=4] [ref=f5e149]
+            - generic [ref=f5e150]:
+              - generic [ref=f5e151]:
+                - generic [ref=f5e152]: location_on
+                - paragraph [ref=f5e153]: كفرتصفا - كفرشكر قليوبية
+              - generic [ref=f5e154]:
+                - generic [ref=f5e155]: schedule
+                - paragraph [ref=f5e156]: "السبت — الخميس: ١٠ص — ١١م الجمعة: بالحجز المسبق"
+              - generic [ref=f5e157]:
+                - generic [ref=f5e158]: call
+                - link "01069389235" [ref=f5e159] [cursor=pointer]:
+                  - /url: tel:01069389235
+              - link "واتساب" [ref=f5e160] [cursor=pointer]:
+                - /url: https://wa.me/201069389235
+          - generic [ref=f5e164]:
+            - heading "المطور" [level=4] [ref=f5e165]
+            - generic [ref=f5e166]:
+              - generic [ref=f5e167]:
+                - generic [ref=f5e168]: person
+                - link "Ahmed Hassaan" [ref=f5e169] [cursor=pointer]:
+                  - /url: https://www.facebook.com/ahmedhassaan.dev
+              - link "إنجاز ميديا إنجاز ميديا" [ref=f5e171] [cursor=pointer]:
+                - /url: https://engaz-media.vercel.app
+                - img "إنجاز ميديا" [ref=f5e172]
+                - generic [ref=f5e173]: إنجاز ميديا
+              - link "201022677775" [ref=f5e177] [cursor=pointer]:
+                - /url: https://wa.me/201022677775
+        - paragraph [ref=f5e179]: © 2026 ZEDA BARBER SHOP. All rights reserved.
+  - alert [ref=f5e180]

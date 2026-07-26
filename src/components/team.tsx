@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useLang } from "@/lib/language-context";
 
 const barbersData = [
-  { name: "team.name1", role: "team.role1", exp: "team.exp1", img: "/images/barbers/zeda.jpg", initial: "ز" },
-  { name: "team.name2", role: "team.role2", exp: "team.exp2", img: "/images/barbers/moaz-allam.jpg", initial: "م" },
-  { name: "team.name3", role: "team.role3", exp: "team.exp3", img: "/images/barbers/mostafa-tarek.jpg", initial: "م" },
-  { name: "team.name4", role: "team.role4", exp: "team.exp4", img: "/images/barbers/moaz-tarek.jpg", initial: "م" },
-  { name: "team.name5", role: "team.role5", exp: "team.exp5", img: "/images/barbers/ahmed-mohamed.jpg", initial: "ع" },
+  { name: "team.name1", role: "team.role1", exp: "team.exp1", img: "/images/barbers/zeda.jpg" },
+  { name: "team.name2", role: "team.role2", exp: "team.exp2", img: "/images/barbers/moaz-allam.jpg" },
+  { name: "team.name3", role: "team.role3", exp: "team.exp3", img: "/images/barbers/mostafa-tarek.jpg" },
+  { name: "team.name4", role: "team.role4", exp: "team.exp4", img: "/images/barbers/moaz-tarek.jpg" },
+  { name: "team.name5", role: "team.role5", exp: "team.exp5", img: "/images/barbers/ahmed-mohamed.jpg" },
 ];
 
 export default function Team() {
@@ -23,26 +23,33 @@ export default function Team() {
           {t("team.desc")}
         </p>
       </div>
-      <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+      <div className="w-full relative overflow-hidden group border-y border-outline-variant/20">
+        <img
+          className="w-full object-cover min-h-[350px] md:min-h-[500px] grayscale group-hover:grayscale-0 transition-all duration-[2000ms]"
+          src="/images/team/ZEDA.svg"
+          alt="ZEDA Team"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+      <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-8">
+        <div className="grid grid-cols-5 gap-3 md:gap-4">
           {barbersData.map((barber, i) => (
             <Link
               key={i}
               href="/booking"
-              className="group/barber relative overflow-hidden rounded-lg aspect-[3/4] hover-lift animate-fade-in-up"
-              style={{ animationDelay: `${i * 100}ms` }}
+              className="group/barber relative overflow-hidden rounded-lg aspect-[3/4] hover-lift"
             >
               <img
                 src={barber.img}
                 alt={t(barber.name)}
                 className="w-full h-full object-cover img-grayscale group-hover/barber:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
-                <span className="font-display-lg text-headline-md text-primary block group-hover/barber:text-white transition-colors duration-400">
+              <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center">
+                <span className="font-display-lg text-xs md:text-sm text-primary block group-hover/barber:text-white transition-colors duration-400">
                   {t(barber.name)}
                 </span>
-                <span className="font-label-caps text-label-caps text-on-surface-variant text-[10px] md:text-xs tracking-wider">
+                <span className="text-on-surface-variant text-[8px] md:text-[10px] tracking-wider block">
                   {t(barber.role)}
                 </span>
               </div>

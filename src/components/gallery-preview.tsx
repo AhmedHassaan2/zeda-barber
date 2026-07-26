@@ -32,13 +32,16 @@ export default function GalleryPreview() {
       </div>
       <div className="grid grid-cols-3 gap-3 md:gap-4">
         {images.slice(0, 6).map((src, i) => (
-          <div key={i} className="overflow-hidden group relative cursor-pointer">
+          <div key={i} className="overflow-hidden group relative cursor-pointer rounded-sm animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
             <img
               src={src}
               alt={`Gallery ${i + 1}`}
               className="w-full h-full object-cover aspect-[4/5] transition-all duration-700 group-hover:scale-110 img-grayscale"
             />
-            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+              <span className="text-xs font-label-caps text-primary uppercase tracking-wider">ZEDA</span>
+            </div>
           </div>
         ))}
       </div>

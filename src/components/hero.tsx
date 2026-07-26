@@ -4,6 +4,7 @@ import { useLang } from "@/lib/language-context";
 
 export default function Hero() {
   const { t } = useLang();
+  const tagline = t("hero.tagline");
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -27,9 +28,20 @@ export default function Hero() {
           className="h-48 md:h-64 w-auto mx-auto mb-6 md:mb-8 drop-shadow-2xl"
         />
         <div className="marquee-strip mb-6 md:mb-8 py-3 md:py-4 bg-surface/50 backdrop-blur-md shadow-xl shadow-black/30 w-full">
-          <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide whitespace-nowrap" style={{ fontFamily: "var(--font-amiri), serif" }}>
-            {t("hero.tagline")}
-          </span>
+          <div className="marquee-track">
+            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
+              {tagline}
+            </span>
+            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
+              {tagline}
+            </span>
+            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
+              {tagline}
+            </span>
+            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
+              {tagline}
+            </span>
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4 animate-fade-in-up animation-delay-300">
           <a

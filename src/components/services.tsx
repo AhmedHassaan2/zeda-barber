@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useLang } from "@/lib/language-context";
 
 const serviceIcons = [
-  "content_cut",
-  "face",
-  "spa",
-  "auto_fix_high",
-  "child_care",
-  "cleaning_services",
-  "favorite",
+  "/images/services/icons/1.png",
+  "/images/services/icons/2.png",
+  "/images/services/icons/3.png",
+  "/images/services/icons/4.png",
+  "/images/services/icons/5.png",
+  "/images/services/icons/6.png",
+  "/images/services/icons/7.png",
 ];
 
 export default function Services() {
@@ -27,9 +27,10 @@ export default function Services() {
   ];
 
   return (
-    <section className="bg-surface-container-lowest py-section-gap">
+    <section className="relative py-16 md:py-24">
+      <div className="section-divider w-full mb-16 md:mb-24"></div>
       <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-8">
           <div>
             <span className="font-label-caps text-label-caps text-primary block mb-4">{t("services.subtitle")}</span>
             <h2 className="font-display-lg text-headline-lg">{t("services.title")}</h2>
@@ -40,27 +41,29 @@ export default function Services() {
             </p>
           </div>
         </div>
-        <div className="space-y-0 divide-y divide-outline-variant/30">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
           {services.map((service, index) => (
             <Link
               key={index}
               href="/booking"
-              className={`group relative py-8 md:py-10 flex items-center gap-6 transition-all duration-400 hover:px-6 animate-fade-in-up stagger-${index + 1}`}
+              className={`service-card group p-5 md:p-6 animate-fade-in-up`}
+              style={{ animationDelay: `${index * 80}ms` }}
             >
-              <div className="absolute left-0 top-0 bottom-0 w-0 bg-primary/5 transition-all duration-400 group-hover:w-full -z-10"></div>
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl opacity-60 group-hover:opacity-100 transition-opacity duration-400 group-hover:scale-110">
-                {serviceIcons[index]}
-              </span>
-              <div className="flex-1 flex items-baseline gap-4">
-                <h3 className="font-display-lg text-headline-md uppercase">{service.name}</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant/10 group-hover:border-primary/30 transition-colors duration-500">
+                  <img
+                    src={serviceIcons[index]}
+                    alt={service.name}
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                  />
+                </div>
+                <h3 className="font-display-lg text-headline-sm leading-tight">{service.name}</h3>
               </div>
-              <span className="font-body-md text-on-surface-variant hidden md:block max-w-[250px] truncate">{service.desc}</span>
-              <span className="font-button text-button uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                {t("services.book")}
-              </span>
-              <span className="material-symbols-outlined text-primary text-2xl group-hover:translate-x-2 transition-transform duration-400">
-                arrow_forward
-              </span>
+              <p className="font-body-sm text-on-surface-variant text-sm leading-relaxed mb-4 line-clamp-2">{service.desc}</p>
+              <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-all duration-400 translate-x-[-8px] group-hover:translate-x-0">
+                <span className="font-button text-xs uppercase tracking-wider">{t("services.book")}</span>
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </div>
             </Link>
           ))}
         </div>

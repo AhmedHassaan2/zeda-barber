@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Cairo, Amiri } from "next/font/google";
+import { Cairo } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language-context";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-cairo",
-  display: "swap",
-});
-
-const amiri = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  variable: "--font-amiri",
   display: "swap",
 });
 
@@ -31,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className={`${cairo.variable} ${amiri.variable} font-body-md bg-surface text-on-surface antialiased`}>
+      <body className={`${cairo.variable} font-body-md bg-surface text-on-surface antialiased`}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

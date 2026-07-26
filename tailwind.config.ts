@@ -55,6 +55,7 @@ const config: Config = {
         "tertiary-fixed": "#e4e2e1",
       },
       fontFamily: {
+        "body-sm": ["var(--font-cairo)", "sans-serif"],
         "body-md": ["var(--font-cairo)", "sans-serif"],
         "body-lg": ["var(--font-cairo)", "sans-serif"],
         "headline-lg-mobile": ["var(--font-cairo)", "sans-serif"],
@@ -64,9 +65,11 @@ const config: Config = {
         "label-caps": ["var(--font-cairo)", "sans-serif"],
         "display-lg": ["var(--font-cairo)", "sans-serif"],
         "headline-lg": ["var(--font-cairo)", "sans-serif"],
-        tagline: ["var(--font-amiri)", "serif"],
+        "headline-sm": ["var(--font-cairo)", "sans-serif"],
+        tagline: ["AmiraTypo", "serif"],
       },
       fontSize: {
+        "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
         "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
         "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0.01em", fontWeight: "400" }],
         "headline-lg-mobile": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
@@ -76,6 +79,7 @@ const config: Config = {
         "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.2em", fontWeight: "600" }],
         "display-lg": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
         "headline-lg": ["48px", { lineHeight: "1.2", fontWeight: "600" }],
+        "headline-sm": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
       },
       spacing: {
         "margin-desktop": "80px",

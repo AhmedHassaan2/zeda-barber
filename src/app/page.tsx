@@ -19,12 +19,21 @@ export default function HomePage() {
         <Services />
         <GalleryPreview />
         <Team />
-        <section className="relative py-32 overflow-hidden border-t border-outline-variant/30">
+        <section className="relative py-20 md:py-28 overflow-hidden">
+          <div className="section-divider w-full mb-16 md:mb-20"></div>
           <div className="relative z-10 px-margin-mobile md:px-margin-desktop text-center max-w-3xl mx-auto animate-fade-in-up">
-            <h2 className="font-display-lg text-display-lg-mobile md:text-display-lg uppercase mb-12 tracking-tight">
+            <div className="flex justify-center mb-8">
+              <img
+                src="/images/chair.png"
+                alt="كرسيك مستنيك"
+                className="h-24 md:h-32 w-auto opacity-80"
+                style={{ filter: "brightness(0) invert(1) opacity(0.15)" }}
+              />
+            </div>
+            <h2 className="font-display-lg text-display-lg-mobile md:text-display-lg uppercase mb-8 tracking-tight">
               {t("cta.title")}
             </h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mb-12">
+            <p className="font-body-lg text-body-lg text-on-surface-variant mb-10">
               {t("cta.desc")}
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">

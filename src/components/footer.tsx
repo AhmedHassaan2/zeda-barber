@@ -16,7 +16,7 @@ export default function Footer() {
               <h4 className="text-primary font-label-caps mb-5 uppercase tracking-wider text-xs">{t("footer.contact")}</h4>
               <div className="space-y-3.5 text-on-surface-variant font-body-md text-sm">
                 <div className="flex items-center gap-3 justify-center md:justify-start">
-                  <img src="/images/services/icons/footer-location.png" alt="" className="w-5 h-5 object-contain flex-shrink-0" style={{ filter: "brightness(0) invert(1) opacity(0.7)" }} />
+                  <img src="/images/services/icons/footer-location.png" alt="" className="w-5 h-5 object-contain flex-shrink-0 icon-golden" />
                   <p>{t("footer.address_val")}</p>
                 </div>
                 <div className="flex items-center gap-3 justify-center md:justify-start">

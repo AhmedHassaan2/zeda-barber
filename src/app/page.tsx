@@ -26,8 +26,7 @@ export default function HomePage() {
               <img
                 src="/images/chair.png"
                 alt="كرسيك مستنيك"
-                className="h-24 md:h-32 w-auto opacity-80"
-                style={{ filter: "brightness(0) invert(1) opacity(0.15)" }}
+                className="h-24 md:h-32 w-auto icon-golden opacity-60"
               />
             </div>
             <h2 className="font-display-lg text-display-lg-mobile md:text-display-lg uppercase mb-8 tracking-tight">

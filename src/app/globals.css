@@ -29,28 +29,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Seamless infinite marquee - text scrolls right-to-left endlessly */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-strip {
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
-}
-
-.marquee-track {
-  display: inline-flex;
-  animation: marquee 20s linear infinite;
-}
-
-.marquee-track > span {
-  display: inline-block;
-  padding-right: 4rem;
-}
-
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -122,11 +100,42 @@ html {
 .animation-delay-500 { animation-delay: 500ms; }
 .animation-delay-600 { animation-delay: 600ms; }
 
-.tagline-gradient {
+/* Tagline - static text with hover color blend effect */
+.tagline-static {
   background: linear-gradient(135deg, #ffffff 0%, #e9c176 50%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: taglineShift 8s ease-in-out infinite;
+  text-shadow: none;
+  filter: drop-shadow(0 2px 8px rgba(233, 193, 118, 0.15));
+  transition: filter 0.5s ease;
+}
+
+.tagline-static:hover {
+  animation: taglineGlow 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 2px 12px rgba(233, 193, 118, 0.4));
+}
+
+@keyframes taglineShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes taglineGlow {
+  0%, 100% {
+    background: linear-gradient(135deg, #ffffff 0%, #e9c176 30%, #f5d998 50%, #e9c176 70%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 2px 16px rgba(233, 193, 118, 0.5));
+  }
+  50% {
+    background: linear-gradient(135deg, #e9c176 0%, #f5d998 30%, #ffffff 50%, #f5d998 70%, #e9c176 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 2px 20px rgba(233, 193, 118, 0.7));
+  }
 }
 
 .img-grayscale {
@@ -221,6 +230,16 @@ html {
   border-image: linear-gradient(135deg, #e9c176, rgba(233,193,118,0.3), #e9c176) 1;
 }
 
+/* Golden icon filter - makes PNG icons match site gold color */
+.icon-golden {
+  filter: brightness(0) invert(73%) sepia(42%) saturate(500%) hue-rotate(355deg) brightness(100%) contrast(90%);
+  transition: filter 0.4s ease;
+}
+
+.icon-golden:hover {
+  filter: brightness(0) invert(73%) sepia(42%) saturate(600%) hue-rotate(355deg) brightness(110%) contrast(95%);
+}
+
 /* Gradient section dividers */
 .section-divider {
   height: 1px;
@@ -236,51 +255,4 @@ html {
   background: linear-gradient(0deg, rgba(18,20,20,0) 0%, #181a1a 100%);
 }
 
-/* Service card styles */
-.service-card {
-  position: relative;
-  background: linear-gradient(145deg, #1e2020 0%, #181a1a 100%);
-  border: 1px solid rgba(233,193,118,0.08);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #e9c176, transparent);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.service-card:hover {
-  border-color: rgba(233,193,118,0.2);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(233,193,118,0.06);
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
 /* Gallery carousel */
-.gallery-slide {
-  animation: galleryCrossfade 60s linear infinite;
-}
-
-@keyframes galleryCrossfade {
-  0%, 14.28% { opacity: 1; }
-  16.66%, 28.57% { opacity: 0; }
-}
-
-.gallery-slide:nth-child(1) { animation-delay: 0s; }
-.gallery-slide:nth-child(2) { animation-delay: 10s; }
-.gallery-slide:nth-child(3) { animation-delay: 20s; }
-.gallery-slide:nth-child(4) { animation-delay: 30s; }
-.gallery-slide:nth-child(5) { animation-delay: 40s; }
-.gallery-slide:nth-child(6) { animation-delay: 50s; }

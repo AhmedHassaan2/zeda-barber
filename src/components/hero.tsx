@@ -27,21 +27,13 @@ export default function Hero() {
           alt="ZEDA"
           className="h-48 md:h-64 w-auto mx-auto mb-6 md:mb-8 drop-shadow-2xl"
         />
-        <div className="marquee-strip mb-6 md:mb-8 py-3 md:py-4 bg-surface/50 backdrop-blur-md shadow-xl shadow-black/30 w-full">
-          <div className="marquee-track">
-            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
-              {tagline}
-            </span>
-            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
-              {tagline}
-            </span>
-            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
-              {tagline}
-            </span>
-            <span className="tagline-gradient font-bold text-[10vw] md:text-7xl leading-none tracking-wide" style={{ fontFamily: "'AmiraTypo', serif" }}>
-              {tagline}
-            </span>
-          </div>
+        <div className="mb-6 md:mb-8 py-3 md:py-4 w-full text-center">
+          <span
+            className="tagline-static font-bold text-[10vw] md:text-7xl leading-none tracking-wide cursor-pointer select-none"
+            style={{ fontFamily: "'AmiraTypo', serif" }}
+          >
+            {tagline}
+          </span>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4 animate-fade-in-up animation-delay-300">
           <a

@@ -4,7 +4,7 @@ import { useLang } from "@/lib/language-context";
 
 export default function Hero() {
   const { t } = useLang();
-  const tagline = t("hero.tagline");
+  const tagline = "سيب نفسك";
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">

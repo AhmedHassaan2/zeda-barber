@@ -4,26 +4,28 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/language-context";
 
-const images = [
-  "/images/gallery/468327681_18072331459624568_4549114272353535235_n.jpg",
-  "/images/gallery/491957006_1197250025744875_8121157652049572953_n.jpg",
-  "/images/gallery/492121218_1196050999198111_2191836169187809032_n.jpg",
-  "/images/gallery/492301544_1198853925584485_7383226821735499964_n.jpg",
-  "/images/gallery/492308762_1196051075864770_2871749411909240801_n.jpg",
-  "/images/gallery/492529379_1197942759008935_7471260529715659363_n.jpg",
-];
-
 export default function GalleryPreview() {
   const { t } = useLang();
+  const [images, setImages] = useState<string[]>([]);
   const [colorIndex, setColorIndex] = useState(-1);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const advance = useCallback(() => {
-    setColorIndex((prev) => (prev + 1) % images.length);
+  useEffect(() => {
+    async function fetchImages() {
+      const res = await fetch("/api/gallery-images");
+      const data = await res.json();
+      setImages(data.images ?? []);
+    }
+    fetchImages();
   }, []);
 
+  const advance = useCallback(() => {
+    setColorIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
   useEffect(() => {
+    if (images.length === 0) return;
     if (isHovered) {
       if (timerRef.current) clearInterval(timerRef.current);
       return;
@@ -32,7 +34,7 @@ export default function GalleryPreview() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isHovered, advance]);
+  }, [isHovered, advance, images.length]);
 
   return (
     <section className="relative py-16 md:py-24">
@@ -60,7 +62,7 @@ export default function GalleryPreview() {
             <div
               key={i}
               className="overflow-hidden group relative cursor-pointer rounded-sm animate-fade-in-up"
-              style={{ animationDelay: `${i * 100}ms` }}
+              style={{ animationDelay: `${(i % 12) * 80}ms` }}
             >
               <img
                 src={src}

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import { Cairo, Geist } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language-context";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-cairo",
+  display: "swap",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
   display: "swap",
 });
 
@@ -24,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className={`${cairo.variable} font-body-md bg-surface text-on-surface antialiased`}>
+      <body className={`${cairo.variable} ${geist.variable} font-body-md bg-surface text-on-surface antialiased`}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

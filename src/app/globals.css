@@ -29,6 +29,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Use Geist for English, Cairo for Arabic */
+html[lang="en"] body,
+html[lang="en"] .font-body-sm,
+html[lang="en"] .font-body-md,
+html[lang="en"] .font-body-lg,
+html[lang="en"] .font-headline-lg-mobile,
+html[lang="en"] .font-display-lg-mobile,
+html[lang="en"] .font-headline-md,
+html[lang="en"] .font-button,
+html[lang="en"] .font-label-caps,
+html[lang="en"] .font-display-lg,
+html[lang="en"] .font-headline-lg,
+html[lang="en"] .font-headline-sm {
+  font-family: var(--font-geist), sans-serif;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -230,24 +246,14 @@ html {
   border-image: linear-gradient(135deg, #e9c176, rgba(233,193,118,0.3), #e9c176) 1;
 }
 
-/* Golden icon filter - soft warm amber gold matching site primary */
+/* Golden icon filter - matches ZEDA facade gold gradient */
 .icon-golden {
-  filter: brightness(0) invert(80%) sepia(25%) saturate(400%) hue-rotate(355deg) brightness(95%) contrast(85%);
+  filter: brightness(0) invert(72%) sepia(35%) saturate(500%) hue-rotate(5deg) brightness(90%) contrast(88%);
   transition: filter 0.4s ease;
 }
 
 .icon-golden:hover {
-  filter: brightness(0) invert(85%) sepia(20%) saturate(350%) hue-rotate(355deg) brightness(100%) contrast(85%);
-}
-
-/* Services icon - only color the black lines, preserve white fills */
-.icon-lines-only {
-  filter: brightness(0) invert(80%) sepia(25%) saturate(400%) hue-rotate(355deg) brightness(95%) contrast(85%);
-  transition: filter 0.4s ease;
-}
-
-.icon-lines-only:hover {
-  filter: brightness(0) invert(85%) sepia(20%) saturate(350%) hue-rotate(355deg) brightness(100%) contrast(85%);
+  filter: brightness(0) invert(78%) sepia(30%) saturate(450%) hue-rotate(5deg) brightness(95%) contrast(88%);
 }
 
 /* Gradient section dividers */

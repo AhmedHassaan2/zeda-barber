@@ -2,6 +2,7 @@
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import PageFacade from "@/components/page-facade";
 import Link from "next/link";
 import { useLang } from "@/lib/language-context";
 
@@ -79,7 +80,7 @@ export default function ContactPage() {
                 <span className="material-symbols-outlined text-primary text-3xl mt-1">call</span>
                 <div>
                   <h3 className="font-label-caps text-label-caps text-primary mb-1 uppercase tracking-wider text-xs">{t("contact.phone")}</h3>
-                  <a href="tel:01069389235" className="font-body-lg text-body-lg hover:text-primary transition-colors" dir="ltr">{t("contact.phone_val")}</a>
+                  <a href="tel:+201069389235" className="font-body-lg text-body-lg hover:text-primary transition-colors" dir="ltr">+20 106 938 9235</a>
                 </div>
               </div>
               <div className="flex items-start gap-4 group hover-lift p-4 rounded-lg hover:bg-surface-container transition-colors duration-300">
@@ -113,6 +114,7 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+      <PageFacade />
       <div className="h-32 bg-gradient-to-b from-surface to-black"></div>
       <Footer />
     </>

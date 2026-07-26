@@ -32,11 +32,6 @@ export default function Services() {
       <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-8">
           <div className="flex items-center gap-4">
-            <img
-              src="/images/services/icons/services-icon.png"
-              alt=""
-              className="w-12 h-12 md:w-14 md:h-14 object-contain icon-lines-only"
-            />
             <div>
               <span className="font-label-caps text-label-caps text-primary block mb-2">{t("services.subtitle")}</span>
               <h2 className="font-display-lg text-headline-lg">{t("services.title")}</h2>

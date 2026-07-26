@@ -2,6 +2,7 @@
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import PageFacade from "@/components/page-facade";
 import Link from "next/link";
 import { useLang } from "@/lib/language-context";
 
@@ -74,6 +75,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </main>
+      <PageFacade />
       <div className="h-32 bg-gradient-to-b from-surface to-black"></div>
       <Footer />
     </>

@@ -35,7 +35,7 @@ export default function Services() {
             <img
               src="/images/services/icons/services-icon.png"
               alt=""
-              className="w-12 h-12 md:w-14 md:h-14 object-contain icon-golden"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain"
             />
             <div>
               <span className="font-label-caps text-label-caps text-primary block mb-2">{t("services.subtitle")}</span>

@@ -29,7 +29,7 @@ export default function Hero() {
         />
         <div className="mb-6 md:mb-8 py-3 md:py-4 w-full text-center">
           <span
-            className="tagline-static font-bold text-[10vw] md:text-7xl leading-none tracking-wide cursor-pointer select-none"
+            className="tagline-static font-bold text-[8vw] md:text-6xl leading-none tracking-wide cursor-pointer select-none"
             style={{ fontFamily: "'AmiraTypo', serif" }}
           >
             {tagline}

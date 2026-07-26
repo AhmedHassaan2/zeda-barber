@@ -57,6 +57,14 @@ export default function Team() {
             </Link>
           ))}
         </div>
+        {/* ZEDA Facade */}
+        <div className="mt-12 md:mt-16 flex justify-center">
+          <img
+            src="/images/zeda-facade.png"
+            alt="ZEDA Barber Shop"
+            className="w-full max-w-[600px] md:max-w-[800px] h-auto object-contain zeda-facade"
+          />
+        </div>
       </div>
     </section>
   );

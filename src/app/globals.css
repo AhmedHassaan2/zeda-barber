@@ -256,3 +256,81 @@ html {
 }
 
 /* Gallery carousel */
+
+/* ZEDA Facade - remove background, apply white-to-gold gradient */
+.zeda-facade {
+  mix-blend-mode: screen;
+  filter: grayscale(100%) brightness(1.2) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+
+.zeda-facade:hover {
+  filter: grayscale(0%) brightness(1) contrast(1);
+}
+
+/* Section gradient transitions - smooth blending between sections */
+.section-blend-top {
+  position: relative;
+}
+.section-blend-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(18,20,20,1) 0%, rgba(18,20,20,0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-blend-bottom {
+  position: relative;
+}
+.section-blend-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(0deg, rgba(18,20,20,1) 0%, rgba(18,20,20,0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gallery page enhanced styles */
+.gallery-masonry {
+  column-count: 2;
+  column-gap: 12px;
+}
+@media (min-width: 768px) {
+  .gallery-masonry {
+    column-count: 3;
+    column-gap: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  .gallery-masonry {
+    column-count: 4;
+    column-gap: 16px;
+  }
+}
+
+.gallery-masonry > * {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+/* Gallery thumbnail strip */
+.gallery-thumb-strip {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(233,193,118,0.3) transparent;
+}
+.gallery-thumb-strip::-webkit-scrollbar {
+  height: 4px;
+}
+.gallery-thumb-strip::-webkit-scrollbar-thumb {
+  background: rgba(233,193,118,0.3);
+  border-radius: 2px;
+}

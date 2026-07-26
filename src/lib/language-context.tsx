@@ -168,7 +168,7 @@ const translations: Record<string, Record<string, string>> = {
     "footer.phone": "Phone",
     "footer.phone_val": "+20 106 938 9235",
     "footer.whatsapp": "WhatsApp",
-    "footer.developer": "Designed & Developed by",
+    "footer.developer": "Design & Development",
     "footer.dev_by": "Developed by",
     "footer.dev_whatsapp": "Developer WhatsApp",
     "footer.copyright": "© 2026 ZEDA BARBER SHOP. All rights reserved.",
